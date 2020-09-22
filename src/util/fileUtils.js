@@ -1,6 +1,7 @@
 'use strict';
 
 let fs = require('fs');
+let iconvlite = require('iconv-lite');
 
 class FileUtils {
 
