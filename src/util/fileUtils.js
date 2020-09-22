@@ -5,7 +5,8 @@ let fs = require('fs');
 class FileUtils {
 
     readFile(fileInputName) {
-        return fs.readFileSync(fileInputName).toString();
+        let content = fs.readFileSync(fileInputName);
+        return iconvlite.decode(content, 'latin1').toString();
     }
 
     writeFile(json, fileOutputName) {
