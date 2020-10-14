@@ -38,7 +38,7 @@ class CsvToJson {
     return parse(parsedCsv, {
       columns: true,
       delimiter: fieldDelimiter,
-      trim: true,
+      relax:true
     });
   }
 
