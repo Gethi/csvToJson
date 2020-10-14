@@ -3,6 +3,7 @@
 let fileUtils = require("././util/fileUtils");
 let stringUtils = require("././util/stringUtils");
 let jsonUtils = require("././util/jsonUtils");
+const parse = require('csv-parse/lib/sync');
 
 const newLine = /\r?\n/;
 const defaultFieldDelimiter = ";";
@@ -32,7 +33,13 @@ class CsvToJson {
 
   getJsonFromCsv(fileInputName) {
     let parsedCsv = fileUtils.readFile(fileInputName);
-    return this.csvToJson(parsedCsv);
+    //return this.csvToJson(parsedCsv);
+    let fieldDelimiter = this.getFieldDelimiter();
+    return parse(parsedCsv, {
+      columns: true,
+      delimiter: fieldDelimiter,
+      trim: true,
+    });
   }
 
   csvStringToJson(csvString) {
